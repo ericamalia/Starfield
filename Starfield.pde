@@ -9,6 +9,20 @@ void draw()
 }
 class NormalParticle
 {
+	double xPos;
+	double yPos;
+	double speed;
+	double myAngle; 
+	NormalParticle(){
+
+	}
+	void show() {
+		color(((int)(Math.random()*255)),((int)(Math.random()*255)),((int)(Math.random()*255)));
+		ellipse(xPos,yPos,8,8);
+	}
+	void move(){
+		
+	}
 	//your code here
 }
 interface Particle
