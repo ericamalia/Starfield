@@ -1,6 +1,7 @@
 //your code here
 void setup()
 {
+	size(1000,1000);
 	//your code here
 }
 void draw()
@@ -21,7 +22,8 @@ class NormalParticle
 		ellipse(xPos,yPos,8,8);
 	}
 	void move(){
-		
+		xPos = xPos + (Math.cos(myAngle) * speed);
+		yPos = yPos + (Math.sin(myAngle) * speed);
 	}
 	//your code here
 }
