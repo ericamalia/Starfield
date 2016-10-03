@@ -53,19 +53,23 @@ interface Particle
 	public void move();
 	//your code here
 }
+
 class OddballParticle implements Particle//uses an interface
 {
 
+	double xPos;
+	double yPos;
+	double speed;
+	double myAngle;
 	public void show(){
 		fill(204, 85, 85);
-		rect( xPos, yPos, 20,20,5);
+		rect( (float)xPos, (float) yPos, 40,40,8);
 
 	}
 	public void move(){
-		rotate(20);
 		xPos = xPos + (Math.cos((int)(myAngle)) * (int)speed);
 		yPos = yPos + (Math.sin((int)(myAngle)) * (int)speed);
-		
+		myAngle = myAngle + (Math.random() * (Math.PI / 12));
 	}
 	//your code here
 }
