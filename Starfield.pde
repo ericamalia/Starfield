@@ -9,6 +9,7 @@ void setup()
 	for (int i= 0; i< allThem.length; i++){
 		allThem[i]= new NormalParticle();
 		allThem[0] = new OddballParticle();
+		allThem[1] = new JumboParticle();
 	}
 	//your code here
 }
@@ -33,20 +34,24 @@ class NormalParticle implements Particle
 		xPos = 450;
 		yPos = 450;
 		myAngle = (Math.random()*(2*Math.PI));
-		speed = 20;
+		speed = 15;
 
 	}
 	public void show() {
 		fill(((int)(Math.random()*255)),((int)(Math.random()*255)),((int)(Math.random()*255)));
-		ellipse((float)xPos,(float)yPos,12,12);
+		ellipse((float)xPos,(float)yPos,15,15);
 	}
 	public void move(){
 		xPos = xPos + (Math.cos((int)(myAngle)) * (int)speed);
 		yPos = yPos + (Math.sin((int)(myAngle)) * (int)speed);
 		myAngle = myAngle + (Math.random() * (Math.PI / 12));
-		
+		if (xPos> 900 || xPos < 0){
+			xPos = 450;
+			yPos = 450;
+		}
 	}//your code here
 }
+
 interface Particle
 {
 	public void show();
@@ -61,6 +66,13 @@ class OddballParticle implements Particle//uses an interface
 	double yPos;
 	double speed;
 	double myAngle;
+	OddballParticle(){
+		xPos = 450;
+		yPos = 450;
+		myAngle = (4*Math.PI);
+		speed = -10;
+
+	}
 	public void show(){
 		fill(204, 85, 85);
 		rect( (float)xPos, (float) yPos, 40,40,8);
@@ -73,8 +85,19 @@ class OddballParticle implements Particle//uses an interface
 	}
 	//your code here
 }
-class JumboParticle //uses inheritance
+class JumboParticle extends OddballParticle//uses inheritance
 {
+	JumboParticle(){
+		xPos = 450;
+		yPos = 450;
+		speed= 12;
+
+	}
+	
+	public void show(){
+		fill(255);
+		rect((float)xPos, (float)yPos, 100,100,2);
+	}
 	//your code here
 }
 
