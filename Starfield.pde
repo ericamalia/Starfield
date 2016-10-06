@@ -4,18 +4,19 @@ Particle [] allThem;
 void setup()
 {
 	size(900,900);
-	allThem = new Particle[100];
+	allThem = new Particle[300];
 
 	for (int i= 0; i< allThem.length; i++){
 		allThem[i]= new NormalParticle();
 		allThem[0] = new OddballParticle();
 		allThem[1] = new JumboParticle();
 	}
+	frameRate(25);
 	//your code here
 }
 void draw()
 {
-	background(0);
+	background(4, 19, 34);
 	
 	for (int i= 0; i< allThem.length; i++){
 		allThem[i].show();
@@ -34,17 +35,18 @@ class NormalParticle implements Particle
 		xPos = 450;
 		yPos = 450;
 		myAngle = (Math.random()*(2*Math.PI));
-		speed = 15;
+		speed = 10;
 
 	}
 	public void show() {
-		fill(((int)(Math.random()*255)),((int)(Math.random()*255)),((int)(Math.random()*255)));
-		ellipse((float)xPos,(float)yPos,15,15);
+		noStroke();
+		fill(((int)(Math.random()*100)),((int)(Math.random()*255)),((int)(Math.random()*200)));
+		ellipse((float)xPos,(float)yPos,10,10);
 	}
 	public void move(){
 		xPos = xPos + (Math.cos((int)(myAngle)) * (int)speed);
 		yPos = yPos + (Math.sin((int)(myAngle)) * (int)speed);
-		myAngle = myAngle + (Math.random() * (Math.PI / 12));
+		myAngle = myAngle + (.06);
 		if (xPos> 900 || xPos < 0){
 			xPos = 450;
 			yPos = 450;
@@ -74,14 +76,16 @@ class OddballParticle implements Particle//uses an interface
 
 	}
 	public void show(){
+		 PImage b;
+		 b = loadImage("fish.png");
 		fill(204, 85, 85);
-		rect( (float)xPos, (float) yPos, 40,40,8);
+		image(b, (float)xPos, (float) yPos, 70,60);
 
 	}
 	public void move(){
 		xPos = xPos + (Math.cos((int)(myAngle)) * (int)speed);
 		yPos = yPos + (Math.sin((int)(myAngle)) * (int)speed);
-		myAngle = myAngle + (Math.random() * (Math.PI / 12));
+		myAngle = myAngle + (Math.random() * .1);
 	}
 	//your code here
 }
@@ -92,11 +96,13 @@ class JumboParticle extends OddballParticle//uses inheritance
 		yPos = 450;
 		speed= 12;
 
+
 	}
 	
 	public void show(){
-		fill(255);
-		rect((float)xPos, (float)yPos, 100,100,2);
+		PImage b;
+		 b = loadImage("fish.png");
+		image(b, (float)xPos, (float) yPos, 90,80);
 	}
 	//your code here
 }
