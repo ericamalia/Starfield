@@ -1,11 +1,13 @@
 //your code here
 
 Particle [] allThem;
+ PImage b;
+
 void setup()
 {
 	size(900,900);
 	allThem = new Particle[300];
-
+    b = loadImage("fish.png");
 	for (int i= 0; i< allThem.length; i++){
 		allThem[i]= new NormalParticle();
 		allThem[0] = new OddballParticle();
@@ -76,9 +78,7 @@ class OddballParticle implements Particle//uses an interface
 
 	}
 	public void show(){
-		 PImage b;
-		 b = loadImage("fish.png");
-		fill(204, 85, 85);
+		
 		image(b, (float)xPos, (float) yPos, 70,60);
 
 	}
@@ -100,8 +100,7 @@ class JumboParticle extends OddballParticle//uses inheritance
 	}
 	
 	public void show(){
-		PImage b;
-		 b = loadImage("fish.png");
+
 		image(b, (float)xPos, (float) yPos, 90,80);
 	}
 	//your code here
